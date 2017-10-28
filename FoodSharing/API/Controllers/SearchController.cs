@@ -10,12 +10,14 @@ namespace API.Controllers
     [Route(Routes.SEARCH)]
     public class SearchController : Controller
     {
-        [Route("search")]
-        [HttpPost("search", Name = "Searcg")]
-        public IActionResult Create([FromBody] string query)
+        [HttpGet(Name = "Search")]
+        public IActionResult Create()
         {
+            if (!Request.Query.ContainsKey("query"))
+                return Ok(new List<Offer>());
+            var query = Request.Query["count"];
             if (String.IsNullOrWhiteSpace(query))
-                return Ok(OfferRepository.GetAll());
+                return Ok(new List<Offer>());
             else
                 return Ok(OfferRepository.GetByQueryInProds(query));
             // todo ADD XD
