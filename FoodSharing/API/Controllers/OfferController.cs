@@ -28,7 +28,7 @@ namespace API.Controllers
         [HttpPost("create", Name = "CreateOffer")]
         public IActionResult Create([FromBody] Offer offer)
         {
-            if (offer.Address != null)
+            if (OfferRepository.Create(offer))
                 return Ok(offer.OfferId);
             // todo ADD XD
             return BadRequest();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using API.Model.Entities;
+using API.Repositories;
 
 namespace API.Controllers
 {
@@ -12,31 +13,13 @@ namespace API.Controllers
         [HttpGet(Name = "GetUsers")]
         public IActionResult Get()
         {
-            return Ok(new List<User>()
-            {
-                new User {
-                    UserId = Guid.NewGuid(),
-                    Name = "Kamil Makarowski",
-                    Email = "kam.makarowski@gmail.com",
-                    DefaultAddress = "Dziura w dupie 1/2",
-                    IsFoundation = true,
-                    Password = "XD"
-                },
-                new User {
-                    UserId = Guid.NewGuid(),
-                    Name = "Adam Giża",
-                    Email = "adam.giza@gmail.com",
-                    DefaultAddress = "Dziura w dupie 2/1",
-                    IsFoundation = false,
-                    Password = "XD"
-                }
-            });
+            return Ok(UserRepository.GetAll());
         }
         [Route("create")]
         [HttpPost("create", Name = "CreateUser")]
         public IActionResult Add([FromBody] User user)
         {
-            if (user.Name != null && user.Password != null && user.Email != null)
+            if (UserRepository.Add(user))
                 return Ok(user.UserId);
             // todo ADD XD
             return BadRequest();
@@ -45,15 +28,7 @@ namespace API.Controllers
         [HttpGet("{id}", Name = "GetUser")]
         public IActionResult Get(Guid id)
         {
-            return Ok(new User
-            {
-                UserId = Guid.NewGuid(),
-                Name = "Adam Giża",
-                Email = "adam.giza@gmail.com",
-                DefaultAddress = "Dziura w dupie 2/1",
-                IsFoundation = false,
-                Password = "XD"
-            });
+            return Ok(UserRepository.Get(id));
         }
     }
 }

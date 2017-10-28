@@ -7,7 +7,7 @@ namespace API.Model.Entities
 {
     public class User
     {
-        public Guid UserId { get; set; }
+        public Guid UserId { get;}
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -15,5 +15,9 @@ namespace API.Model.Entities
         public bool IsFoundation { get; set; }
         public List<Offer> Offers {get; set; }
 
+        public User()
+        {
+            this.UserId = Guid.NewGuid();
+        }
     }
 }

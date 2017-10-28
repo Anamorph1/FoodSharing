@@ -12,8 +12,8 @@ namespace API.Repositories
         {
             new Offer()
             {
-                OfferId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
+                OfferDecription = "OPISPOISPAOSPOAPSOAPO1",
                 RecieveTimes = new List<TimeFrame>
                 {
                     new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
@@ -23,12 +23,14 @@ namespace API.Repositories
                 {
                     ProductRepository.Get("Frytki")
                 },
-                CreationDate = DateTime.Now.AddHours(-1)
+                CreationDate = DateTime.Now.AddHours(-1),
+                Address = "ADRES 123",
+                IsForFoundationOnly = false
             },
             new Offer()
             {
-                OfferId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
+                OfferDecription = "OPISPOISPAOSPOAPSOAPO2",
                 ProductIds = new List<Guid>
                 {
                     ProductRepository.Get("Kurczak")
@@ -38,18 +40,23 @@ namespace API.Repositories
                     new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
                     new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
                 },
-                CreationDate = DateTime.Now.AddHours(-2)
+                CreationDate = DateTime.Now.AddHours(-2),
+                Address = "ADRES 456",
+                IsForFoundationOnly = false
             }
         };
 
         public static IList<Offer> GetAll()
         {
-            return offers.OrderByDescending(o => o.CreationDate).ToArray();
+            return GetN(100);
         }
 
         public static IList<Offer> GetN(int n)
         {
-            return offers.OrderByDescending(o => o.CreationDate).Take(n).ToArray();
+            List<Offer> result = new List<Offer>();
+            while (result.Count() < 100)
+                result.AddRange(offers);
+            return result.OrderByDescending(o => o.CreationDate).Take(n).ToArray();
         }
 
         public static Offer Get(Guid offerId)
@@ -57,9 +64,14 @@ namespace API.Repositories
             return offers.First(o => o.OfferId == offerId);
         }
 
-        public static void Create(Offer offer)
+        public static bool Create(Offer offer)
         {
-            offers.Add(offer);
+            if (offer.OfferDecription != null && offer.ProductIds.Count > 0 && offer.RecieveTimes.Count > 0 && offer.Address != null)
+            {
+                offers.Add(offer);
+                return true;
+            }
+            return false;
         }
 
         public static void RemoveProducts(Guid offerId, IEnumerable<Guid> productIds)
