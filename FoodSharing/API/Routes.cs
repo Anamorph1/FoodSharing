@@ -20,9 +20,7 @@ namespace API
 
         public const string ORDERS = API + "orders/";
         public const string ORDER_ID = ORDERS + "{id}/";
-        public const string ORDER_CREATE = ORDER_ID + "create/";
-        public const string ORDER_UPDATE = ORDER_ID + "update/";
-        public const string ORDER_SUBMIT = ORDER_ID + "submit/{id}";
+        public const string ORDER_SUBMIT = ORDERS + "submit/";
 
         public const string USERS = API + "users/";
         public const string USER_ID = USERS + "{id}/";

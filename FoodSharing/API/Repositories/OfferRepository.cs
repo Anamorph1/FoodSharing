@@ -61,6 +61,17 @@ namespace API.Repositories
         {
             offers.Add(offer);
         }
+
+        public static void RemoveProducts(Guid offerId, IEnumerable<Guid> productIds)
+        {
+            var offer = Get(offerId);
+            if (offer == null)
+                throw new Exception("Offer does not exist");
+            offer.ProductIds.RemoveAll(p => productIds.Contains(p));
+
+            if (offer.ProductIds.Count() == 0)
+                offers.Remove(offer);
+        }
     }
 
 

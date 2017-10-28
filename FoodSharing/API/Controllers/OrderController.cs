@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using API.Model.Entities;
+using API.Repositories;
 
 namespace API.Controllers
 {
@@ -12,30 +13,18 @@ namespace API.Controllers
         [HttpGet(Name = "GetOrders")]
         public IActionResult Get()
         {
-            return Ok();
+            return Ok(
+                OrderRepository.GetAll());
         }
 
-        [Route("create")]
-        [HttpPost("create", Name = "CreateOrder")]
+        [Route("submit")]
+        [HttpPost("submit", Name = "SubmitOrder")]
         public IActionResult Create([FromBody] Order order)
         {
-            return Ok();
-            // todo ADD XD
-        }
-
-        [Route("update")]
-        [HttpPost("update", Name = "UpdateOrder")]
-        public IActionResult Update([FromBody] Order order)
-        {
-            return Ok();
-            // todo ADD XD
-        }
-
-        [Route("submit/{id}")]
-        [HttpPost("submit/{id}", Name = "SubmitOrder")]
-        public IActionResult Submit([FromBody] Guid id)
-        {
-            return Ok();
+            if (OrderRepository.SubmitOrder(order))
+                return Ok();
+            else
+                return BadRequest();
             // todo ADD XD
         }
 
@@ -46,7 +35,8 @@ namespace API.Controllers
             {
                 OrderId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
-                OfferIds = new List<Guid>()
+                OfferId = Guid.NewGuid(),
+                ProductIds = new List<Guid>()
                 {
                     Guid.NewGuid(),
                     Guid.NewGuid()
