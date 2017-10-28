@@ -7,7 +7,6 @@ namespace API.Model.Entities
     {
         public Guid ProductId { get; }
         public string Name { get; set; }
-        public string Description { get; set; }
         public DateTime ExpirationDate { get; set; }
         public Uri ImageId { get; }
 

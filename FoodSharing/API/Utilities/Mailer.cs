@@ -51,6 +51,7 @@ namespace API.Utilities
 
                 body.Append(string.Format("* {0},\r\n", ProductRepository.Get(p).Name));
             }
+            body.Append("\r\n");
             body.Append("Have a great day!\r\n FoodSharingNetwork");
 
             mail.Body = body.ToString();
@@ -76,7 +77,7 @@ namespace API.Utilities
             body.Append(string.Format("Hi {0}!\r\n", order.RequestorName));
             body.Append("\r\n");
             body.Append("You order was submitted.\r\n");
-            body.Append(string.Format("You can contact {0} owner by {1}. \r\n", offer.OwnerName, offer.OwnerEmail));
+            body.Append(string.Format("You can contact {0} by {1}. \r\n", offer.OwnerName, offer.OwnerEmail));
             body.Append(string.Format("You declared to meet him {0}.\r\n", order.ReceiveTime));
             body.Append("Please be on time to pick up:\r\n");
             foreach (Guid p in order.ProductIds)
@@ -84,6 +85,7 @@ namespace API.Utilities
 
                 body.Append(string.Format("* {0},\r\n", ProductRepository.Get(p).Name));
             }
+            body.Append("\r\n");
             body.Append("Have a great day!\r\n FoodSharingNetwork");
 
             mail.Body = body.ToString();

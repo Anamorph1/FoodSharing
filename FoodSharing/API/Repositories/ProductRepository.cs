@@ -29,7 +29,7 @@ namespace API.Repositories
 
         public static bool Add(Product product)
         {
-            if (product.Name != null && product.Description != null && product.ExpirationDate != null)
+            if (product.Name != null && product.ExpirationDate != null)
             {
                 products.Add(product);
                 return true;

@@ -13,7 +13,7 @@ namespace API.Model.Entities
         public string OwnerName { get; set; }
         public string OwnerEmail { get; set; }
         public string Address { get; set; }
-        public List<string> RecieveTimes { get; set; }
+        public List<string> ReceiveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
         public string OfferDescription { get; set; }
         public Uri OfferImage { get

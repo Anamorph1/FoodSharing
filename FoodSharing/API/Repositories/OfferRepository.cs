@@ -14,7 +14,7 @@ namespace API.Repositories
 
         public static IList<Offer> GetByQueryInProds(string query)
         {
-            return OfferRepository.offers.Where(o => o.ProductIds.Any(p => ProductRepository.Get(p).Name.Contains(query) || ProductRepository.Get(p).Description.Contains(query))).ToList();
+            return OfferRepository.offers.Where(o => o.ProductIds.Any(p => ProductRepository.Get(p).Name.Contains(query))).ToList();
         }
 
         public static IList<Offer> GetAll()
@@ -25,7 +25,7 @@ namespace API.Repositories
         public static IList<Offer> GetN(int n)
         {
             List<Offer> result = new List<Offer>();
-            while (result.Count() < 100)
+            while (result.Count() < 100 && offers.Count() != 0)
                 result.AddRange(offers);
             return result.OrderByDescending(o => o.CreationDate).Take(n).ToArray();
         }
@@ -37,7 +37,7 @@ namespace API.Repositories
 
         public static bool Create(Offer offer)
         {
-            if (offer.OfferDescription != null && offer.ProductIds.Count > 0 && offer.RecieveTimes.Count > 0 && offer.Address != null)
+            if (offer.OfferDescription != null && offer.ProductIds.Count > 0 && offer.ReceiveTimes.Count > 0 && offer.Address != null)
             {
                 offers.Add(offer);
                 return true;
