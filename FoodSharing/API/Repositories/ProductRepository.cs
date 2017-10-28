@@ -14,14 +14,12 @@ namespace API.Repositories
                     ProductId = Guid.NewGuid(),
                     Name = "Frytki",
                     Description = "100g",
-                    ImageId = Guid.NewGuid(),
                     ExpirationDate = DateTime.Now.AddHours(12)
             },
             new Product {
                     ProductId = Guid.NewGuid(),
                     Name = "Kurczak",
                     Description = "Żywy kurczak",
-                    ImageId = Guid.NewGuid(),
                     ExpirationDate = DateTime.Now.AddHours(96)
             }
         };
