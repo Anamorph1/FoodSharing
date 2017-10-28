@@ -15,6 +15,8 @@ namespace API.Model.Entities
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
         public OfferState State { get; set; }
+
+        public DateTime CreationDate { get; set; }
         //public User AcceptingUser { get; set; }
 
         public void AddProduct(Product product)

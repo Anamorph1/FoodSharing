@@ -13,6 +13,14 @@ namespace API.Controllers
         [HttpGet(Name = "GetOffers")]
         public IActionResult Get()
         {
+            if (Request.Query.ContainsKey("count"))
+            {
+                int count;
+                if (Int32.TryParse(Request.Query["count"], out count))
+                    return Ok(OfferRepository.GetN(count));
+                else
+                    return BadRequest();
+            }
             return Ok(OfferRepository.GetAll());
         }
 

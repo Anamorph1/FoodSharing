@@ -23,6 +23,7 @@ namespace API.Repositories
                 {
                     ProductRepository.Get("Frytki")
                 },
+                CreationDate = DateTime.Now.AddHours(-1)
             },
             new Offer()
             {
@@ -36,13 +37,19 @@ namespace API.Repositories
                 {
                     new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
                     new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
-                }
+                },
+                CreationDate = DateTime.Now.AddHours(-2)
             }
         };
 
         public static IList<Offer> GetAll()
         {
-            return offers;
+            return offers.OrderByDescending(o => o.CreationDate).ToArray();
+        }
+
+        public static IList<Offer> GetN(int n)
+        {
+            return offers.OrderByDescending(o => o.CreationDate).Take(n).ToArray();
         }
 
         public static Offer Get(Guid offerId)
