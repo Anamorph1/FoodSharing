@@ -13,7 +13,7 @@ namespace API.Repositories
             new Offer()
             {
                 OwnerId = Guid.NewGuid(),
-                OfferDecription = "OPISPOISPAOSPOAPSOAPO1",
+                OfferDescription = "OPISPOISPAOSPOAPSOAPO1",
                 RecieveTimes = new List<TimeFrame>
                 {
                     new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
@@ -30,7 +30,7 @@ namespace API.Repositories
             new Offer()
             {
                 OwnerId = Guid.NewGuid(),
-                OfferDecription = "OPISPOISPAOSPOAPSOAPO2",
+                OfferDescription = "OPISPOISPAOSPOAPSOAPO2",
                 ProductIds = new List<Guid>
                 {
                     ProductRepository.Get("Kurczak")
@@ -71,7 +71,7 @@ namespace API.Repositories
 
         public static bool Create(Offer offer)
         {
-            if (offer.OfferDecription != null && offer.ProductIds.Count > 0 && offer.RecieveTimes.Count > 0 && offer.Address != null)
+            if (offer.OfferDescription != null && offer.ProductIds.Count > 0 && offer.RecieveTimes.Count > 0 && offer.Address != null)
             {
                 offers.Add(offer);
                 return true;

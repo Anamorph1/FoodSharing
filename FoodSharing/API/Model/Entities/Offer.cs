@@ -14,7 +14,7 @@ namespace API.Model.Entities
         public string Address { get; set; }
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
-        public string OfferDecsription { get; set; }
+        public string OfferDescription { get; set; }
         public Uri OfferImage { get
             {
                 return ProductRepository.Get(ProductIds.First()).ImageId;
