@@ -13,15 +13,11 @@ namespace API.Controllers
         [HttpGet(Name = "Search")]
         public IActionResult Create()
         {
-            if (!Request.Query.ContainsKey("query"))
-                return Ok(new List<Offer>());
-            var query = Request.Query["count"];
+            var query = Request.Query["query"];
             if (String.IsNullOrWhiteSpace(query))
                 return Ok(new List<Offer>());
             else
                 return Ok(OfferRepository.GetByQueryInProds(query));
-            // todo ADD XD
-            
         }
 
     }
