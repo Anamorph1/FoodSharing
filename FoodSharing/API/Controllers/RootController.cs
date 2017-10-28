@@ -8,7 +8,7 @@ namespace API.Controllers
     public class RootController : Controller
     {
         // GET: api/
-        [HttpGet]
+        [HttpGet(Name = "GetRoot")]
         public Dictionary<string, string> Get()
         {
             var root = "http://" + Request.Host.ToString() + "/";

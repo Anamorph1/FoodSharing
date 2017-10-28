@@ -8,8 +8,8 @@ namespace API.Model.Entities
     public class Offer
     {
         public Guid OfferId { get; set; }
-        public List<Product> Products { get; set; }
-        public User Owner { get; set; }
+        public List<Guid> ProductIds { get; set; }
+        public Guid OwnerId { get; set; }
         public string Address { get; set; }
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
@@ -17,16 +17,16 @@ namespace API.Model.Entities
 
         public void AddProduct(Product product)
         {
-            if (Products == null)
-                Products = new List<Product>();
-            Products.Add(product);
+            //if (Products == null)
+            //    Products = new List<Product>();
+            //Products.Add(product);
         }
 
         public void AddTimeFrame(TimeFrame timeFrame)
         {
-            if (RecieveTimes == null)
-                RecieveTimes = new List<TimeFrame>();
-            RecieveTimes.Add(timeFrame);
+            //if (RecieveTimes == null)
+            //    RecieveTimes = new List<TimeFrame>();
+            //RecieveTimes.Add(timeFrame);
         }
     }
 }

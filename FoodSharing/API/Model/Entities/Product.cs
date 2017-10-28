@@ -9,7 +9,8 @@ namespace API.Model.Entities
     {
         public Guid ProductId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime ExpirationDate { get; set; }
-        public string Base64Image { get; set; }
+        public Guid ImageId { get; set; }
     }
 }
