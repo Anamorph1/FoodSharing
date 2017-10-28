@@ -30,7 +30,7 @@ namespace API.Utilities
             Offer offer = OfferRepository.Get(order.OfferId);
             User ownerUser = UserRepository.Get(offer.OwnerId);
             User acceptingUser = UserRepository.Get(order.OwnerId);
-            MailMessage mail = new MailMessage(AppAddress, new MailAddress(offer.Address));
+            MailMessage mail = new MailMessage(AppAddress, new MailAddress(acceptingUser.Email));
             mail.Subject = "Twoja oferta została zaakceptowana";
 
             StringBuilder body = new StringBuilder();
