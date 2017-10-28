@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace API.Repositories
 {
-    public class ProductRepository
+    public static class ProductRepository
     {
-        IList<Product> products;
+        public static IList<Product> products = new List<Product>()
+        {
 
-        public void Add(Product product)
+        };
+
+        public static void Add(Product product)
         {
             products.Add(product);
         }

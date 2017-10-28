@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace API.Repositories
 {
-    class UserRepository
+    public static class UserRepository
     {
-        IEnumerable <User> users { get; }
+        public static IList<User> users { get; }
     }
 }

@@ -18,7 +18,7 @@ namespace API.Model.Entities
 
         public void ConfirmOffer(User user)
         {
-            foreach(var offerId in user.Offers.Where(o => Offers.Contains(o.OfferId)).Select(o => o.OfferId))
+            foreach(var offerId in user.Offers.Where(o => OfferIds.Contains(o.OfferId)).Select(o => o.OfferId))
             {
                 user.Offers.FirstOrDefault(o => o.OfferId == offerId).State = Enums.OfferState.Reserved;
             }

@@ -8,19 +8,19 @@ namespace API.Repositories
 {
     public class OfferRepository
     {
-        public IList<Offer> offers;
+        public static IList<Offer> offers;
 
-        public IList<Offer> GetAll()
+        public static IList<Offer> GetAll()
         {
             return offers;
         }
 
-        public Offer Get(Guid offerId)
+        public static Offer Get(Guid offerId)
         {
             return offers.First(o => o.OfferId == offerId);
         }
 
-        public void Create(Offer offer)
+        public static void Create(Offer offer)
         {
             offers.Add(offer);
         }
