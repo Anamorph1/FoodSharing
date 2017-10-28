@@ -12,7 +12,7 @@ namespace API.Repositories
         {
             new Offer()
             {
-                OwnerId = Guid.NewGuid(),
+                OwnerId = Guid.Parse("User2222-2222-2222-2222-222222222222"),
                 OfferDescription = "OPISPOISPAOSPOAPSOAPO1",
                 RecieveTimes = new List<string>
                 {
@@ -21,18 +21,18 @@ namespace API.Repositories
                 },
                 ProductIds = new List<Guid>
                 {
-                    ProductRepository.Get("Frytki")
+                    Guid.Parse("Produ111-1111-1111-1111-111111111111")
                 },
                 Address = "ADRES 123",
                 IsForFoundationOnly = false
             },
             new Offer()
             {
-                OwnerId = Guid.NewGuid(),
+                OwnerId = Guid.Parse("User2222-2222-2222-2222-222222222222"),
                 OfferDescription = "OPISPOISPAOSPOAPSOAPO2",
                 ProductIds = new List<Guid>
                 {
-                    ProductRepository.Get("Kurczak")
+                    Guid.Parse("Produ222-2222-2222-2222-222222222222")
                 },
                 RecieveTimes = new List<string>
                 {

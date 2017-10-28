@@ -22,10 +22,6 @@ namespace API
         public const string ORDER_ID = ORDERS + "{id}/";
         public const string ORDER_SUBMIT = ORDERS + "submit/";
 
-        public const string USERS = API + "users/";
-        public const string USER_ID = USERS + "{id}/";
-        public const string USER_CREATE = USERS + "create/";
-
         public const string SEARCH = API + "search/";
 
         public static Dictionary<string, string> GetRoutes(string root)

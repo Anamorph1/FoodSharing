@@ -10,7 +10,8 @@ namespace API.Model.Entities
     {
         public Guid OfferId { get; }
         public List<Guid> ProductIds { get; set; }
-        public Guid OwnerId { get; set; }
+        public string OwnerName { get; set; }
+        public string OwnerEmail { get; set; }
         public string Address { get; set; }
         public List<string> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
