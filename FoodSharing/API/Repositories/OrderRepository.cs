@@ -11,24 +11,6 @@ namespace API.Repositories
     {
         public static IList<Order> orders = new List<Order>()
         {
-            new Order
-            {
-                OwnerId = Guid.Parse("User1111-1111-1111-1111-111111111111"),
-                OfferId = Guid.Parse("Offer111-1111-1111-1111-111111111111"),
-                ProductIds = new List<Guid>()
-                {
-                    Guid.Parse("Produ111-1111-1111-1111-111111111111")
-                }
-            },
-            new Order
-            {
-                OwnerId = Guid.Parse("User1111-1111-1111-1111-111111111111"),
-                OfferId = Guid.Parse("Offer222-2222-2222-2222-222222222222"),
-                ProductIds = new List<Guid>()
-                {
-                    Guid.Parse("Produ222-2222-2222-2222-222222222222")
-                }
-            },
         };
 
         public static Order Get(Guid orderId)

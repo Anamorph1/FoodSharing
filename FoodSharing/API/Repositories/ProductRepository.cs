@@ -10,16 +10,6 @@ namespace API.Repositories
     {
         public static IList<Product> products = new List<Product>()
         {
-            new Product {
-                    Name = "Frytki",
-                    Description = "100g",
-                    ExpirationDate = DateTime.Now.AddHours(12)
-            },
-            new Product {
-                    Name = "Kurczak",
-                    Description = "Żywy kurczak",
-                    ExpirationDate = DateTime.Now.AddHours(96)
-            }
         };
 
         public static IList<Product> GetAll()

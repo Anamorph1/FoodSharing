@@ -9,7 +9,8 @@ namespace API.Model.Entities
     {
         public Guid OrderId { get;}
         public IEnumerable<Guid> ProductIds { get; set; }
-        public Guid OwnerId { get; set; }
+        public string RequestorName { get; set; }
+        public string RequestorEmail { get; set; }
         public string ReceiveTime { get; set; }
         public Guid OfferId { get; set; }
 
