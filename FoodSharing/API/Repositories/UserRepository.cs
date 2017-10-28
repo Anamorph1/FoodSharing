@@ -23,9 +23,9 @@ namespace API.Repositories
             }
         };
 
-        public static Guid Get(string name)
+        public static User Get(Guid userId)
         {
-            return users.First(u => u.Name == name).UserId;
+            return users.First(u => u.UserId == userId);
         }
     }
 }
