@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Enums;
+using API.Repositories;
 
 namespace API.Model.Entities
 {
@@ -15,6 +16,15 @@ namespace API.Model.Entities
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
         public OfferState State { get; set; }
+
+        public string ExpirationDate
+        {
+            get
+            {
+                Guid minId = ProductIds.OrderByDescending(p => ProductRepository.Get(p).ExpirationDate).First();
+                return ProductRepository.Get(minId).ExpirationDate.ToShortDateString();
+            }
+        }
 
         public DateTime CreationDate { get; set; }
         //public User AcceptingUser { get; set; }
@@ -32,6 +42,8 @@ namespace API.Model.Entities
             //    RecieveTimes = new List<TimeFrame>();
             //RecieveTimes.Add(timeFrame);
         }
+
+
 
     }
 }
