@@ -13,7 +13,6 @@ namespace API.Repositories
         {
             new Order
             {
-                OrderId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
                 OfferId = Guid.NewGuid(),
                 ReceiveTime = new TimeFrame(DateTime.Now.AddHours(1),DateTime.Now.AddHours(2)),
@@ -25,7 +24,6 @@ namespace API.Repositories
             },
             new Order
             {
-                OrderId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
                 OfferId = Guid.NewGuid(),
                 ReceiveTime = new TimeFrame(DateTime.Now.AddHours(1),DateTime.Now.AddHours(2)),

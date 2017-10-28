@@ -33,7 +33,6 @@ namespace API.Controllers
         {
             return Ok(new Order
             {
-                OrderId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
                 OfferId = Guid.NewGuid(),
                 ProductIds = new List<Guid>()
