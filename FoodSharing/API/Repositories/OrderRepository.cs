@@ -15,7 +15,7 @@ namespace API.Repositories
             {
                 OwnerId = Guid.NewGuid(),
                 OfferId = Guid.NewGuid(),
-                ReceiveTime = new TimeFrame(DateTime.Now.AddHours(1),DateTime.Now.AddHours(2)),
+                ReceiveTime = "Saturday night",
                 ProductIds = new List<Guid>()
                 {
                     Guid.NewGuid(),
@@ -26,7 +26,7 @@ namespace API.Repositories
             {
                 OwnerId = Guid.NewGuid(),
                 OfferId = Guid.NewGuid(),
-                ReceiveTime = new TimeFrame(DateTime.Now.AddHours(1),DateTime.Now.AddHours(2)),
+                ReceiveTime = "Friday morning",
                 ProductIds = new List<Guid>()
                 {
                     Guid.NewGuid(),

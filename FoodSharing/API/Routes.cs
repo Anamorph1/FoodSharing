@@ -26,10 +26,6 @@ namespace API
         public const string USER_ID = USERS + "{id}/";
         public const string USER_CREATE = USERS + "create/";
 
-        public const string IMAGES = API + "images/";
-        public const string IMAGE_ID = IMAGES + "{id}/";
-        public const string IMAGE_CREATE = IMAGES + "/create";
-
         public const string SEARCH = API + "search/";
 
         public static Dictionary<string, string> GetRoutes(string root)

@@ -14,10 +14,10 @@ namespace API.Repositories
             {
                 OwnerId = Guid.NewGuid(),
                 OfferDescription = "OPISPOISPAOSPOAPSOAPO1",
-                RecieveTimes = new List<TimeFrame>
+                RecieveTimes = new List<string>
                 {
-                    new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
-                    new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
+                    "Friday evening",
+                    "Saturday morning"
                 },
                 ProductIds = new List<Guid>
                 {
@@ -34,10 +34,9 @@ namespace API.Repositories
                 {
                     ProductRepository.Get("Kurczak")
                 },
-                RecieveTimes = new List<TimeFrame>
+                RecieveTimes = new List<string>
                 {
-                    new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
-                    new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
+                    "Wednesday, 10pm to 11pm"
                 },
                 Address = "ADRES 456",
                 IsForFoundationOnly = false

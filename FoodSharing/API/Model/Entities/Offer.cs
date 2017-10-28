@@ -12,7 +12,7 @@ namespace API.Model.Entities
         public List<Guid> ProductIds { get; set; }
         public Guid OwnerId { get; set; }
         public string Address { get; set; }
-        public List<TimeFrame> RecieveTimes { get; set; }
+        public List<string> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
         public string OfferDescription { get; set; }
         public Uri OfferImage { get
