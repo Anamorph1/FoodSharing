@@ -35,6 +35,11 @@ namespace API.Repositories
             }
         };
 
+        public static Order Get(Guid orderId)
+        {
+            return orders.Where(x => x.OrderId == orderId).First();
+        }
+
         internal static IEnumerable<Order> GetAll()
         {
             return orders;

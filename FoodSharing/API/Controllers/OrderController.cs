@@ -13,8 +13,7 @@ namespace API.Controllers
         [HttpGet(Name = "GetOrders")]
         public IActionResult Get()
         {
-            return Ok(
-                OrderRepository.GetAll());
+            return Ok(OrderRepository.GetAll());
         }
 
         [Route("submit")]
@@ -31,16 +30,7 @@ namespace API.Controllers
         [HttpGet("{id}", Name = "GetOrder")]
         public IActionResult Get(Guid id)
         {
-            return Ok(new Order
-            {
-                OwnerId = Guid.NewGuid(),
-                OfferId = Guid.NewGuid(),
-                ProductIds = new List<Guid>()
-                {
-                    Guid.NewGuid(),
-                    Guid.NewGuid()
-                }
-            });
+            return Ok(OrderRepository.Get(id));
         }
     }
 }
