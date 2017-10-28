@@ -9,10 +9,10 @@ namespace API.Controllers
     {
         // GET: api/
         [HttpGet(Name = "GetRoot")]
-        public Dictionary<string, string> Get()
+        public IActionResult Get()
         {
             var root = "http://" + Request.Host.ToString() + "/";
-            return Routes.GetRoutes(root);
+            return Ok(Routes.GetRoutes(root));
         }
 
     }

@@ -9,6 +9,7 @@ namespace API
     public class Routes
     {
         public const string API = "api/";
+
         public const string OFFERS = API + "offers/";
         public const string OFFER_ID = OFFERS + "{id}/";
         public const string OFFER_CREATE = OFFERS + "create/";
@@ -21,10 +22,10 @@ namespace API
         public const string ORDER_ID = ORDERS + "{id}/";
         public const string ORDER_CREATE = ORDER_ID + "create/";
         public const string ORDER_UPDATE = ORDER_ID + "update/";
-        public const string ORDER_SUBMIT = ORDER_ID + "submit/";
+        public const string ORDER_SUBMIT = ORDER_ID + "submit/{id}";
 
         public const string USERS = API + "users/";
-        public const string USER_ID = API + USERS + "{id}/";
+        public const string USER_ID = USERS + "{id}/";
         public const string USER_CREATE = USERS + "create/";
 
         public const string IMAGES = API + "images/";

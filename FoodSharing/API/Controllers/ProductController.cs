@@ -10,9 +10,9 @@ namespace API.Controllers
     public class ProductController : Controller
     {
         [HttpGet(Name = "Getproducts")]
-        public IEnumerable<Product> Get()
+        public IActionResult Get()
         {
-            return new List<Product>()
+            return Ok(new List<Product>()
             {
                 new Product {
                     ProductId = Guid.NewGuid(),
@@ -28,29 +28,30 @@ namespace API.Controllers
                     ImageId = Guid.NewGuid(),
                     ExpirationDate = DateTime.Now.AddHours(96)
                 }
-            };
+            });
         }
+
         [Route("create")]
         [HttpPost("create", Name = "CreateProduct")]
-        public ActionResult Add([FromBody] Product product)
+        public IActionResult Add([FromBody] Product product)
         {
             if (product.Name != null && product.Description != null)
-                return Ok();
+                return Ok(product.ProductId);
             // todo ADD XD
             return BadRequest();
         }
 
         [HttpGet("{id}", Name = "GetProduct")]
-        public Product Get(Guid id)
+        public IActionResult Get(Guid id)
         {
-            return new Product
+            return Ok(new Product
             {
                 ProductId = Guid.NewGuid(),
                 Name = "Kurczak",
                 Description = "Żywy kurczak",
                 ImageId = Guid.NewGuid(),
                 ExpirationDate = DateTime.Now.AddHours(96)
-            };
+            });
         }
     }
 }

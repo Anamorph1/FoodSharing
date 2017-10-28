@@ -10,9 +10,9 @@ namespace API.Controllers
     public class UserController : Controller
     {
         [HttpGet(Name = "GetUsers")]
-        public IEnumerable<User> Get()
+        public IActionResult Get()
         {
-            return new List<User>()
+            return Ok(new List<User>()
             {
                 new User {
                     UserId = Guid.NewGuid(),
@@ -30,22 +30,22 @@ namespace API.Controllers
                     IsFoundation = false,
                     Password = "XD"
                 }
-            };
+            });
         }
         [Route("create")]
         [HttpPost("create", Name = "CreateUser")]
-        public ActionResult Add([FromBody] User user)
+        public IActionResult Add([FromBody] User user)
         {
             if (user.Name != null && user.Password != null && user.Email != null)
-                return Ok();
+                return Ok(user.UserId);
             // todo ADD XD
             return BadRequest();
         }
 
         [HttpGet("{id}", Name = "GetUser")]
-        public User Get(Guid id)
+        public IActionResult Get(Guid id)
         {
-            return new User
+            return Ok(new User
             {
                 UserId = Guid.NewGuid(),
                 Name = "Adam Giża",
@@ -53,7 +53,7 @@ namespace API.Controllers
                 DefaultAddress = "Dziura w dupie 2/1",
                 IsFoundation = false,
                 Password = "XD"
-            };
+            });
         }
     }
 }

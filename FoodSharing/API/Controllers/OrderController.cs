@@ -10,76 +10,70 @@ namespace API.Controllers
     public class OrderController : Controller
     {
         [HttpGet(Name = "GetOrders")]
-        public IEnumerable<Offer> Get()
+        public IActionResult Get()
         {
-            return new List<Offer>()
+            return Ok(new List<Order>()
             {
-                new Offer
+                new Order
                 {
-                    OfferId = Guid.NewGuid(),
-                    Address = "Dziura w dupie 1/1",
+                    OrderId = Guid.NewGuid(),
                     OwnerId = Guid.NewGuid(),
-                    IsForFoundationOnly = false,
-                    ProductIds = new List<Guid>
+                    OfferIds = new List<Guid>()
                     {
                         Guid.NewGuid(),
                         Guid.NewGuid()
-                    },
-                    RecieveTimes = new List<TimeFrame>
-                    {
-                        new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
-                        new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
                     }
                 },
-                                new Offer
+                new Order
                 {
-                    OfferId = Guid.NewGuid(),
-                    Address = "Dziura w dupie 1/2",
+                    OrderId = Guid.NewGuid(),
                     OwnerId = Guid.NewGuid(),
-                    IsForFoundationOnly = false,
-                    ProductIds = new List<Guid>
+                    OfferIds = new List<Guid>()
                     {
                         Guid.NewGuid(),
                         Guid.NewGuid()
-                    },
-                    RecieveTimes = new List<TimeFrame>
-                    {
-                        new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
-                        new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
                     }
                 }
-            };
+            });
         }
+
         [Route("create")]
         [HttpPost("create", Name = "CreateOrder")]
-        public ActionResult Add([FromBody] Offer offer)
+        public IActionResult Create([FromBody] Order order)
         {
-            if (offer.Address != null)
-                return Ok();
+            return Ok();
             // todo ADD XD
-            return BadRequest();
+        }
+
+        [Route("update")]
+        [HttpPost("update", Name = "UpdateOrder")]
+        public IActionResult Update([FromBody] Order order)
+        {
+            return Ok();
+            // todo ADD XD
+        }
+
+        [Route("submit/{id}")]
+        [HttpPost("submit/{id}", Name = "SubmitOrder")]
+        public IActionResult Submit([FromBody] Guid id)
+        {
+            return Ok();
+            // todo ADD XD
         }
 
         [HttpGet("{id}", Name = "GetOrder")]
-        public Offer Get(Guid id)
+        public IActionResult Get(Guid id)
         {
-            return new Offer
+            return Ok(new Order
             {
-                OfferId = id,
-                Address = "Dziura w dupie 1/1",
+                OrderId = Guid.NewGuid(),
                 OwnerId = Guid.NewGuid(),
-                IsForFoundationOnly = false,
-                ProductIds = new List<Guid>
-                    {
-                        Guid.NewGuid(),
-                        Guid.NewGuid()
-                    },
-                RecieveTimes = new List<TimeFrame>
-                    {
-                        new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
-                        new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
-                    }
-            };
+                OfferIds = new List<Guid>()
+                {
+                    Guid.NewGuid(),
+                    Guid.NewGuid()
+                }
+            });
         }
     }
 }

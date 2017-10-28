@@ -10,9 +10,9 @@ namespace API.Controllers
     public class OfferController : Controller
     {
         [HttpGet(Name = "GetOffers")]
-        public IEnumerable<Offer> Get()
+        public IActionResult Get()
         {
-            return new List<Offer>()
+            return Ok(new List<Offer>()
             {
                 new Offer
                 {
@@ -31,7 +31,7 @@ namespace API.Controllers
                         new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
                     }
                 },
-                                new Offer
+                new Offer
                 {
                     OfferId = Guid.NewGuid(),
                     Address = "Dziura w dupie 1/2",
@@ -48,22 +48,22 @@ namespace API.Controllers
                         new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
                     }
                 }
-            };
+            });
         }
         [Route("create")]
         [HttpPost("create", Name = "CreateOffer")]
-        public ActionResult Add([FromBody] Offer offer)
+        public IActionResult Create([FromBody] Offer offer)
         {
             if (offer.Address != null)
-                return Ok();
+                return Ok(offer.OfferId);
             // todo ADD XD
             return BadRequest();
         }
 
         [HttpGet("{id}", Name = "GetOffer")]
-        public Offer Get(Guid id)
+        public IActionResult Get(Guid id)
         {
-            return new Offer
+            return Ok(new Offer
             {
                 OfferId = id,
                 Address = "Dziura w dupie 1/1",
@@ -79,7 +79,7 @@ namespace API.Controllers
                         new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
                         new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
                     }
-            };
+            });
         }
     }
 }
