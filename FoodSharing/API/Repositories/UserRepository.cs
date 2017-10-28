@@ -9,5 +9,10 @@ namespace API.Repositories
     public static class UserRepository
     {
         public static IList<User> users { get; }
+
+        public static User Get(Guid userId)
+        {
+            return users.Where(x => x.UserId == userId).Single();
+        }
     }
 }

@@ -17,5 +17,10 @@ namespace API.Repositories
         {
             products.Add(product);
         }
+
+        public static Product Get(Guid productId)
+        {
+            return products.Where(x => x.ProductId == productId).Single();
+        }
     }
 }
