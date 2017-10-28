@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -12,7 +7,7 @@ namespace API.Controllers
     [Route(Routes.API)]
     public class RootController : Controller
     {
-        // GET: api/Root
+        // GET: api/
         [HttpGet]
         public Dictionary<string, string> Get()
         {
