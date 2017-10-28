@@ -13,11 +13,18 @@ namespace API.Model.Entities
 
         public void AddOffer(Offer offer)
         {
-            //if (OrderLine == null)
-            //    OrderLine = new Dictionary<User, List<Offer>>();
-            //if (!OrderLine.ContainsKey(offer.Owner))
-            //    OrderLine.Add(offer.Owner, new List<Offer>());
-            //OrderLine[offer.Owner].Add(offer);
+
         }
+
+        public void ConfirmOffer(User user)
+        {
+            foreach(var offerId in user.Offers.Where(o => Offers.Contains(o.OfferId)).Select(o => o.OfferId))
+            {
+                user.Offers.FirstOrDefault(o => o.OfferId == offerId).State = Enums.OfferState.Reserved;
+            }
+            NotificationManager.ConfirmOrder(user);
+        }
+
+
     }
 }

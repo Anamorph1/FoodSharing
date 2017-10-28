@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Enums;
 
 namespace API.Model.Entities
 {
@@ -13,6 +14,7 @@ namespace API.Model.Entities
         public string Address { get; set; }
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
+        public OfferState State { get; set; }
         //public User AcceptingUser { get; set; }
 
         public void AddProduct(Product product)
@@ -28,5 +30,6 @@ namespace API.Model.Entities
             //    RecieveTimes = new List<TimeFrame>();
             //RecieveTimes.Add(timeFrame);
         }
+
     }
 }

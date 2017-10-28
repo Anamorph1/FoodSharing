@@ -13,6 +13,7 @@ namespace API.Model.Entities
         public string Password { get; set; }
         public string DefaultAddress { get; set; }
         public bool IsFoundation { get; set; }
+        public List<Offer> Offers {get; set; }
 
     }
 }
