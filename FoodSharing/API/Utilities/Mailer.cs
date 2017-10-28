@@ -25,7 +25,7 @@ namespace API.Utilities
             Credentials = new NetworkCredential(AppAddress.Address, AppPassword)
         };
 
-        public static void SendOfferAcceptanceMessage(Order order)
+        public static bool SendOfferAcceptanceMessage(Order order)
         {
             Offer offer = OfferRepository.Get(order.OfferId);
             User ownerUser = UserRepository.Get(offer.OwnerId);
@@ -36,8 +36,8 @@ namespace API.Utilities
             StringBuilder body = new StringBuilder();
             body.Append(string.Format("Witaj {0}!\r\n", ownerUser.Name));
             body.Append("\r\n");
-            body.Append(string.Format("Twoja oferta została zaakceptowana przez użytkownika {0}.\r\n", acceptingUser.Name));
-            body.Append(string.Format("Pojawi się {0}.\r\n", order.ReceiveTime));
+            body.Append(string.Format("Twoja oferta \"{0}\" została zaakceptowana przez użytkownika {1}.\r\n", offer.OfferDescription ,acceptingUser.Name));
+            body.Append(string.Format("Pojawi się pomiędzy {0} a {1}.\r\n", order.ReceiveTime.DateFrom, order.ReceiveTime.DateTo));
             body.Append("Przygotuj dla niego następujące produkty:\r\n");
             foreach (Guid p in order.ProductIds)
             {
@@ -48,7 +48,15 @@ namespace API.Utilities
 
             mail.Body = body.ToString();
 
-            smtpClient.Send(mail);
+            try
+            {
+                smtpClient.Send(mail);
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -61,8 +61,7 @@ namespace API.Repositories
             Mailer.SendOfferAcceptanceMessage(order);
             OfferRepository.RemoveProducts(order.OfferId, order.ProductIds);
 
-
-            return false;
+            return true;
         }
     }
 }
