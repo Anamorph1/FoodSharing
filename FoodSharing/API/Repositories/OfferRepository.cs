@@ -46,6 +46,11 @@ namespace API.Repositories
             }
         };
 
+        public static IList<Offer> GetByQueryInProds(string query)
+        {
+            return OfferRepository.offers.Where(o => o.ProductIds.Any(p => ProductRepository.Get(p).Name.Contains(query) || ProductRepository.Get(p).Description.Contains(query))).ToList();
+        }
+
         public static IList<Offer> GetAll()
         {
             return GetN(100);

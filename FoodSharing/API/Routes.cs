@@ -30,6 +30,8 @@ namespace API
         public const string IMAGE_ID = IMAGES + "{id}/";
         public const string IMAGE_CREATE = IMAGES + "/create";
 
+        public const string SEARCH = API + "search/";
+
         public static Dictionary<string, string> GetRoutes(string root)
         {
             Dictionary<string, string> routes = new Dictionary<string, string>();
