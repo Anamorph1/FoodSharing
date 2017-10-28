@@ -23,7 +23,6 @@ namespace API.Repositories
                 {
                     ProductRepository.Get("Frytki")
                 },
-                CreationDate = DateTime.Now.AddHours(-1),
                 Address = "ADRES 123",
                 IsForFoundationOnly = false
             },
@@ -40,7 +39,6 @@ namespace API.Repositories
                     new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
                     new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
                 },
-                CreationDate = DateTime.Now.AddHours(-2),
                 Address = "ADRES 456",
                 IsForFoundationOnly = false
             }

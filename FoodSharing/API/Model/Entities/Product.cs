@@ -5,7 +5,7 @@ namespace API.Model.Entities
 {
     public class Product
     {
-        public Guid ProductId { get; set; }
+        public Guid ProductId { get; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime ExpirationDate { get; set; }
@@ -13,6 +13,7 @@ namespace API.Model.Entities
 
         public Product()
         {
+            this.ProductId = Guid.NewGuid();
             Random rnd = new Random();
             int index = rnd.Next(0, ProductImages.ImageCount);
             ImageId = ProductImages.ImageUris[index];

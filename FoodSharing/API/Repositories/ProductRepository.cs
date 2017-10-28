@@ -11,13 +11,11 @@ namespace API.Repositories
         public static IList<Product> products = new List<Product>()
         {
             new Product {
-                    ProductId = Guid.NewGuid(),
                     Name = "Frytki",
                     Description = "100g",
                     ExpirationDate = DateTime.Now.AddHours(12)
             },
             new Product {
-                    ProductId = Guid.NewGuid(),
                     Name = "Kurczak",
                     Description = "Żywy kurczak",
                     ExpirationDate = DateTime.Now.AddHours(96)
@@ -39,9 +37,14 @@ namespace API.Repositories
             return products.First(p => p.Name == name).ProductId;
         }
 
-        public static void Add(Product product)
+        public static bool Add(Product product)
         {
-            products.Add(product);
+            if (product.Name != null && product.Description != null && product.ExpirationDate != null)
+            {
+                products.Add(product);
+                return true;
+            }
+            return false;
         }
     }
 }

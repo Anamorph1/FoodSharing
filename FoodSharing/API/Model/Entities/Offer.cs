@@ -28,12 +28,14 @@ namespace API.Model.Entities
                 return ProductRepository.Get(minId).ExpirationDate.ToShortDateString();
             }
         }
+        public DateTime CreationDate { get;}
 
         public Offer()
         {
             this.OfferId = Guid.NewGuid();
+            this.CreationDate = DateTime.Now;
         }
 
-        public DateTime CreationDate { get; set; }
+
     }
 }

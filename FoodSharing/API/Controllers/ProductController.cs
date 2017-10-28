@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpPost("create", Name = "CreateProduct")]
         public IActionResult Add([FromBody] Product product)
         {
-            if (product.Name != null && product.Description != null)
+            if (ProductRepository.Add(product))
                 return Ok(product.ProductId);
             // todo ADD XD
             return BadRequest();
