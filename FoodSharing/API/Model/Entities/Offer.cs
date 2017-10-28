@@ -14,5 +14,19 @@ namespace API.Model.Entities
         public List<TimeFrame> RecieveTimes { get; set; }
         public bool IsForFoundationOnly { get; set; }
         //public User AcceptingUser { get; set; }
+
+        public void AddProduct(Product product)
+        {
+            if (Products == null)
+                Products = new List<Product>();
+            Products.Add(product);
+        }
+
+        public void AddTimeFrame(TimeFrame timeFrame)
+        {
+            if (RecieveTimes == null)
+                RecieveTimes = new List<TimeFrame>();
+            RecieveTimes.Add(timeFrame);
+        }
     }
 }
