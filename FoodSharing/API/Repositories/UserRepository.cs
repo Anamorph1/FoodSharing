@@ -8,11 +8,24 @@ namespace API.Repositories
 {
     public static class UserRepository
     {
-        public static IList<User> users { get; }
-
-        public static User Get(Guid userId)
+        public static IList<User> users = new List<User>()
         {
-            return users.Where(x => x.UserId == userId).Single();
+            new User()
+            {
+                UserId = Guid.NewGuid(),
+                Name = "StandardUser"
+            },
+            new User()
+            {
+                UserId = Guid.NewGuid(),
+                Name = "FoundUser",
+                IsFoundation = true
+            }
+        };
+
+        public static Guid Get(string name)
+        {
+            return users.First(u => u.Name == name).UserId;
         }
     }
 }

@@ -12,29 +12,7 @@ namespace API.Controllers
         [HttpGet(Name = "GetOrders")]
         public IActionResult Get()
         {
-            return Ok(new List<Order>()
-            {
-                new Order
-                {
-                    OrderId = Guid.NewGuid(),
-                    OwnerId = Guid.NewGuid(),
-                    OfferIds = new List<Guid>()
-                    {
-                        Guid.NewGuid(),
-                        Guid.NewGuid()
-                    }
-                },
-                new Order
-                {
-                    OrderId = Guid.NewGuid(),
-                    OwnerId = Guid.NewGuid(),
-                    OfferIds = new List<Guid>()
-                    {
-                        Guid.NewGuid(),
-                        Guid.NewGuid()
-                    }
-                }
-            });
+            return Ok();
         }
 
         [Route("create")]

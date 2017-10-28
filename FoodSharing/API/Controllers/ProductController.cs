@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using API.Model.Entities;
+using API.Repositories;
 
 namespace API.Controllers
 {
@@ -12,23 +13,13 @@ namespace API.Controllers
         [HttpGet(Name = "Getproducts")]
         public IActionResult Get()
         {
-            return Ok(new List<Product>()
-            {
-                new Product {
-                    ProductId = Guid.NewGuid(),
-                    Name = "Frytki",
-                    Description = "100g",
-                    ImageId = Guid.NewGuid(),
-                    ExpirationDate = DateTime.Now.AddHours(12)
-                },
-                new Product {
-                    ProductId = Guid.NewGuid(),
-                    Name = "Kurczak",
-                    Description = "Żywy kurczak",
-                    ImageId = Guid.NewGuid(),
-                    ExpirationDate = DateTime.Now.AddHours(96)
-                }
-            });
+            return Ok(ProductRepository.GetAll());
+        }
+
+        [HttpGet("{id}", Name = "GetProduct")]
+        public IActionResult Get(Guid id)
+        {
+            return Ok(ProductRepository.Get(id));
         }
 
         [Route("create")]
@@ -39,19 +30,6 @@ namespace API.Controllers
                 return Ok(product.ProductId);
             // todo ADD XD
             return BadRequest();
-        }
-
-        [HttpGet("{id}", Name = "GetProduct")]
-        public IActionResult Get(Guid id)
-        {
-            return Ok(new Product
-            {
-                ProductId = Guid.NewGuid(),
-                Name = "Kurczak",
-                Description = "Żywy kurczak",
-                ImageId = Guid.NewGuid(),
-                ExpirationDate = DateTime.Now.AddHours(96)
-            });
         }
     }
 }

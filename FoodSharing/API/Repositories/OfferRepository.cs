@@ -8,7 +8,37 @@ namespace API.Repositories
 {
     public class OfferRepository
     {
-        public static IList<Offer> offers;
+        public static IList<Offer> offers = new List<Offer>()
+        {
+            new Offer()
+            {
+                OfferId = Guid.NewGuid(),
+                OwnerId = Guid.NewGuid(),
+                RecieveTimes = new List<TimeFrame>
+                {
+                    new TimeFrame(DateTime.Now.AddHours(11), DateTime.Now.AddHours(12)),
+                    new TimeFrame(DateTime.Now.AddHours(23), DateTime.Now.AddHours(24))
+                },
+                ProductIds = new List<Guid>
+                {
+                    ProductRepository.Get("Frytki")
+                },
+            },
+            new Offer()
+            {
+                OfferId = Guid.NewGuid(),
+                OwnerId = Guid.NewGuid(),
+                ProductIds = new List<Guid>
+                {
+                    ProductRepository.Get("Kurczak")
+                },
+                RecieveTimes = new List<TimeFrame>
+                {
+                    new TimeFrame(DateTime.Now.AddHours(1), DateTime.Now.AddHours(2)),
+                    new TimeFrame(DateTime.Now.AddHours(3), DateTime.Now.AddHours(4))
+                }
+            }
+        };
 
         public static IList<Offer> GetAll()
         {
