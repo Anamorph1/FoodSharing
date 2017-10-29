@@ -18,7 +18,7 @@ namespace API.Controllers
 
         [Route("submit")]
         [HttpPost("submit", Name = "SubmitOrder")]
-        public IActionResult Create([FromBody] Order order)
+        public IActionResult Submit([FromBody] Order order)
         {
             if (OrderRepository.SubmitOrder(order))
             {

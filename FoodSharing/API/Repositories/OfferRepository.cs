@@ -16,8 +16,8 @@ namespace API.Repositories
         {
             return OfferRepository.offers
                 .Where(
-                o => o.ProductIds.Any(
-                    p => ProductRepository.Get(p).Name.Contains(query)
+                o => o.Products.Any(
+                    p => p.Name.Contains(query)
                 ) || o.OfferDescription.Contains(query)).ToList();
         }
 
@@ -54,9 +54,9 @@ namespace API.Repositories
             var offer = Get(offerId);
             if (offer == null)
                 throw new Exception("Offer does not exist");
-            offer.ProductIds.RemoveAll(p => productIds.Contains(p));
+            offer.Products.RemoveAll(p => productIds.Contains(p.ProductId));
 
-            if (offer.ProductIds.Count() == 0)
+            if (offer.Products.Count() == 0)
                 offers.Remove(offer);
         }
     }

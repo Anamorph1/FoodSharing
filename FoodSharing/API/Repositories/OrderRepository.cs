@@ -9,9 +9,7 @@ namespace API.Repositories
 {
     public class OrderRepository
     {
-        public static IList<Order> orders = new List<Order>()
-        {
-        };
+        public static IList<Order> orders = new List<Order>();
 
         public static Order Get(Guid orderId)
         {
@@ -30,9 +28,17 @@ namespace API.Repositories
                 if (offer == null)
                     return false;
 
-                foreach (var productId in order.ProductIds)
-                    if (!offer.ProductIds.Contains(productId))
+                foreach (var product in order.ProductIds) {
+                    bool found = false;
+                    foreach (var p in offer.Products)
+                        if (p.ProductId == product)
+                        {
+                            found = true;
+                            break;
+                        }
+                    if (!found)
                         return false;
+                }
             }
             // all good, submit
 

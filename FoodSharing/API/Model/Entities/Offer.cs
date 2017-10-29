@@ -9,7 +9,7 @@ namespace API.Model.Entities
     public class Offer
     {
         public Guid OfferId { get; }
-        public List<Guid> ProductIds { get; set; }
+        public List<Product> Products { get; set; }
         public string OwnerName { get; set; }
         public string OwnerEmail { get; set; }
         public string Address { get; set; }
@@ -18,15 +18,14 @@ namespace API.Model.Entities
         public string OfferDescription { get; set; }
         public Uri OfferImage { get
             {
-                return ProductRepository.Get(ProductIds.First()).ImageId;
+                return Products.First().ImageId;
             } }
 
         public string ExpirationDate
         {
             get
             {
-                Guid minId = ProductIds.OrderByDescending(p => ProductRepository.Get(p).ExpirationDate).First();
-                return ProductRepository.Get(minId).ExpirationDate;
+                return Products.OrderByDescending(p => p.ExpirationDate).First().ExpirationDate;
             }
         }
         public DateTime CreationDate { get;}

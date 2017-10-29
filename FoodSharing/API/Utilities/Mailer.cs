@@ -46,10 +46,10 @@ namespace API.Utilities
             body.Append(string.Format("You can contact him by {0}. \r\n", order.RequestorEmail));
             body.Append(string.Format("He will meet with you {0}.\r\n", order.ReceiveTime));
             body.Append("Please prepare following products for him to pick up:\r\n");
-            foreach (Guid p in order.ProductIds)
+            foreach (var p in offer.Products)
             {
-
-                body.Append(string.Format("* {0},\r\n", ProductRepository.Get(p).Name));
+                if (order.ProductIds.Contains(p.ProductId))
+                    body.Append(string.Format("* {0},\r\n", p.Name));
             }
             body.Append("\r\n");
             body.Append("Have a great day!\r\n FoodSharingNetwork");
@@ -80,10 +80,10 @@ namespace API.Utilities
             body.Append(string.Format("You can contact {0} by {1}. \r\n", offer.OwnerName, offer.OwnerEmail));
             body.Append(string.Format("You declared to meet him {0}.\r\n", order.ReceiveTime));
             body.Append("Please be on time to pick up:\r\n");
-            foreach (Guid p in order.ProductIds)
+            foreach (var p in offer.Products)
             {
-
-                body.Append(string.Format("* {0},\r\n", ProductRepository.Get(p).Name));
+                if (order.ProductIds.Contains(p.ProductId))
+                    body.Append(string.Format("* {0},\r\n", p.Name));
             }
             body.Append("\r\n");
             body.Append("Have a great day!\r\n FoodSharingNetwork");
