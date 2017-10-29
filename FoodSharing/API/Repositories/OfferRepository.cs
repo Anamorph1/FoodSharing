@@ -21,17 +21,17 @@ namespace API.Repositories
                 ) || o.OfferDescription.Contains(query)).ToList();
         }
 
-        public static IList<Offer> GetAll()
+        public static IList<Offer> GetAll(bool isFound)
         {
-            return offers;
+            return offers.Where(o => o.IsForFoundationOnly == isFound).ToList();
         }
 
-        public static IList<Offer> GetN(int n)
+        public static IList<Offer> GetN(int n, bool isFound)
         {
             List<Offer> result = new List<Offer>();
             while (result.Count() < n && offers.Count() != 0)
                 result.AddRange(offers);
-            return result.OrderByDescending(o => o.CreationDate).Take(n).ToArray();
+            return result.Where(o => o.IsForFoundationOnly == isFound).OrderByDescending(o => o.CreationDate).Take(n).ToArray();
         }
 
         public static Offer Get(Guid offerId)

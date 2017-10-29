@@ -14,8 +14,9 @@ namespace API.Controllers
         public IActionResult Create()
         {
             var query = Request.Query["query"];
+            var isFound = Convert.ToBoolean(Request.Query["isFoundation"]);
             if (String.IsNullOrWhiteSpace(query))
-                return Ok(new List<Offer>());
+                return Ok(OfferRepository.GetAll(isFound));
             else
                 return Ok(OfferRepository.GetByQueryInProds(query));
         }
