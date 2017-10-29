@@ -18,7 +18,7 @@ namespace API.Controllers
             if (String.IsNullOrWhiteSpace(query))
                 return Ok(OfferRepository.GetAll(isFound));
             else
-                return Ok(OfferRepository.GetByQueryInProds(query));
+                return Ok(OfferRepository.GetByQueryInProds(query, isFound));
         }
 
     }

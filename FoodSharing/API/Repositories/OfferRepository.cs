@@ -12,12 +12,12 @@ namespace API.Repositories
         {
         };
 
-        public static IList<Offer> GetByQueryInProds(string query)
+        public static IList<Offer> GetByQueryInProds(string query, bool isFound)
         {
             return OfferRepository.offers
                 .Where(
                 o => o.Products.Any(
-                    p => p.Name.Contains(query)
+                    p => p.Name.ToLower().Contains(query.ToLower()) && (isFound || o.IsForFoundationOnly)
                 ) || o.OfferDescription.Contains(query)).ToList();
         }
 
