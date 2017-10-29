@@ -21,7 +21,9 @@ namespace API.Controllers
         public IActionResult Create([FromBody] Order order)
         {
             if (OrderRepository.SubmitOrder(order))
+            {
                 return Ok();
+            }
             else
                 return BadRequest();
             // todo ADD XD

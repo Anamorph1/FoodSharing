@@ -29,7 +29,9 @@ namespace API.Controllers
         public IActionResult Create([FromBody] Offer offer)
         {
             if (OfferRepository.Create(offer))
+            {
                 return Ok(offer.OfferId);
+            }
             // todo ADD XD
             return BadRequest();
         }

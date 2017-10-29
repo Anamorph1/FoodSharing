@@ -37,7 +37,7 @@ namespace API.Repositories
 
         public static bool Create(Offer offer)
         {
-            if (offer.OfferDescription != null && offer.ProductIds.Count > 0 && offer.ReceiveTimes.Count > 0 && offer.Address != null)
+            if (offer.OfferDescription != null/* && offer.ProductIds.Count > 0*/ && offer.ReceiveTimes.Count > 0 && offer.Address != null)
             {
                 offers.Add(offer);
                 return true;

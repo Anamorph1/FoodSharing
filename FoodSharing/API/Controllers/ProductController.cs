@@ -27,7 +27,9 @@ namespace API.Controllers
         public IActionResult Add([FromBody] Product product)
         {
             if (ProductRepository.Add(product))
+            {
                 return Ok(product.ProductId);
+            }
             // todo ADD XD
             return BadRequest();
         }
