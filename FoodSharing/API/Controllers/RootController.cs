@@ -11,9 +11,8 @@ namespace API.Controllers
         [HttpGet(Name = "GetRoot")]
         public IActionResult Get()
         {
-            var root = "http://" + Request.Host.ToString() + "/";
+            var root = "https://" + Request.Host.ToString() + "/";
             return Ok(Routes.GetRoutes(root));
         }
-
     }
 }

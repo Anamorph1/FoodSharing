@@ -13,16 +13,28 @@ namespace API.Controllers
         [HttpGet(Name = "GetOffers")]
         public IActionResult Get()
         {
-            var isFound = Convert.ToBoolean(Request.Query["isFoundation"]);
+            
+            
             if (Request.Query.ContainsKey("count"))
             {
                 int count;
                 if (Int32.TryParse(Request.Query["count"], out count))
-                    return Ok(OfferRepository.GetN(count, isFound));
+                    if(Request.Query.ContainsKey("isFoundation"))
+                    {
+                        var isFound = Convert.ToBoolean(Request.Query["isFoundation"]);
+                        return Ok(OfferRepository.GetN(count, isFound));
+                    }
+                    
                 else
                     return BadRequest();
             }
-            return Ok(OfferRepository.GetAll(isFound));
+            if (Request.Query.ContainsKey("isFoundation"))
+            {
+                var isFound = Convert.ToBoolean(Request.Query["isFoundation"]);
+                return Ok(OfferRepository.GetAll(isFound));
+            }
+            else
+                return Ok(OfferRepository.GetAll(true));
         }
 
         [Route("create")]
