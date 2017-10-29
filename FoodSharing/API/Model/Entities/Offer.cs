@@ -26,7 +26,7 @@ namespace API.Model.Entities
             get
             {
                 Guid minId = ProductIds.OrderByDescending(p => ProductRepository.Get(p).ExpirationDate).First();
-                return ProductRepository.Get(minId).ExpirationDate.ToShortDateString();
+                return ProductRepository.Get(minId).ExpirationDate;
             }
         }
         public DateTime CreationDate { get;}
@@ -36,7 +36,5 @@ namespace API.Model.Entities
             this.OfferId = Guid.NewGuid();
             this.CreationDate = DateTime.Now;
         }
-
-
     }
 }
