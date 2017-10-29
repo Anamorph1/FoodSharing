@@ -14,10 +14,6 @@ namespace API
         public const string OFFER_ID = OFFERS + "{id}/";
         public const string OFFER_CREATE = OFFERS + "create/";
 
-        public const string PRODUCTS = API + "products/";
-        public const string PRODUCT_ID = PRODUCTS + "{id}/";
-        public const string PRODUCT_CREATE = PRODUCTS + "create/";
-
         public const string ORDERS = API + "orders/";
         public const string ORDER_ID = ORDERS + "{id}/";
         public const string ORDER_SUBMIT = ORDERS + "submit/";
