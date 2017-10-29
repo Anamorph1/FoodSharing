@@ -23,7 +23,7 @@ namespace API.Repositories
 
         public static IList<Offer> GetAll(bool isFound)
         {
-            return offers.Where(o => o.IsForFoundationOnly == isFound).ToList();
+            return offers.Where(o => isFound || !o.IsForFoundationOnly).OrderByDescending(o => o.CreationDate).ToArray();
         }
 
         public static IList<Offer> GetN(int n, bool isFound)
@@ -31,7 +31,7 @@ namespace API.Repositories
             List<Offer> result = new List<Offer>();
             while (result.Count() < n && offers.Count() != 0)
                 result.AddRange(offers);
-            return result.Where(o => o.IsForFoundationOnly == isFound).OrderByDescending(o => o.CreationDate).Take(n).ToArray();
+            return result.Where(o => isFound || !o.IsForFoundationOnly).OrderByDescending(o => o.CreationDate).Take(n).ToArray();
         }
 
         public static Offer Get(Guid offerId)
